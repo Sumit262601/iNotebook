@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+body {
+  margin: 0;
+  font-size: larger;
+  font-family: "Kalam", cursive;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.about-background {
+  background-image: url('../images/bg.png'); /* Adjust the path according to your project structure */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: white; /* Optional: to make text more readable over the background */
+  padding: 20px; /* Optional: to add some padding */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+i {
+  cursor: pointer;
+}
