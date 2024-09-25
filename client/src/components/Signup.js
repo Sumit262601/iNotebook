@@ -9,7 +9,7 @@ const Signup = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const {name, email, password} = credentials;
-        const response = await fetch(`https://cloud-api-y3wl.onrender.com/api/auth/createuser`, {
+        const response = await fetch(`https://cloud-api-ewam.onrender.com/api/auth/createuser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
