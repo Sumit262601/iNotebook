@@ -15,7 +15,7 @@ const Home = () => {
           </span>
         </div>
         <Link
-          to="/yournotes"
+          to="/addnotes"
           className="text-lightBlue text-lg sm:text-xl lg:text-2xl border-2 px-6 py-1 border-customBorderColor rounded-lg font-semibold"
         >
           Add your Notes &rarr;

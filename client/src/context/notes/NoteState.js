@@ -5,11 +5,12 @@ import NoteContext from "./noteContext";
 const NoteState = (props) => {
     const notesInitial = []
     const [notes, setNotes] = useState(notesInitial)
+    const CONST_API_NOTES = "https://inotebook-u0jj.onrender.com/api/notes";
 
     // GET all notes
     const getNotes = async () => {
         // ADD API Call
-        const response = await fetch(`https://cloud-api-ewam.onrender.com/api/notes/fetchallnotes`, {
+        const response = await fetch(`${CONST_API_NOTES}/fetchallnotes`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -23,7 +24,7 @@ const NoteState = (props) => {
     // Add notes
     const addNote = async (title, description, tag) => {
         // ADD API Call
-        const response = await fetch(`https://cloud-api-ewam.onrender.com/api/notes/addnotes`, {
+        const response = await fetch(`${CONST_API_NOTES}/addnotes`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -39,7 +40,7 @@ const NoteState = (props) => {
     // Delete Notes
     const deleteNote = async (id) => {
         // DELETE API Call
-        const response = await fetch(`https://cloud-api-ewam.onrender.com/api/notes/deletenotes/${id}`, {
+        const response = await fetch(`${CONST_API_NOTES}/deletenotes/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -58,7 +59,7 @@ const NoteState = (props) => {
     // Edit Notes
     const editNote = async (id, title, description, tag) => {
         // Edit API Call
-        const response = await fetch(`https://cloud-api-ewam.onrender.com/api/notes/updatenotes/${id}`, {
+        const response = await fetch(`https://inotebook-u0jj.onrender.com/api/notes/updatenotes/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

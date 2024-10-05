@@ -4,38 +4,19 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { IoMdLock } from "react-icons/io";
-import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from "jwt-decode";
 
 const Signup = (props) => {
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-
-    const handleGoogleSuccess = (credentialResponse) => {
-        const decoded = jwtDecode(credentialResponse?.credential);
-        console.log(decoded);
-
-        // Save the user data (you might want to store it in localStorage, Context, or a state manager)
-        localStorage.setItem('token', credentialResponse.credential); // Example storage
-
-        // Show success alert
-        props.showAlert('Register successful!', 'success');
-
-        // Redirect to home page
-        navigate('/');
-    };
-    const handleGoogleError = () => {
-        console.log('Signup Failed');
-        props.showAlert('SignUp failed! Please try again.', 'error'); // Show error alert
-    };
+    const CONST_API_USER = "https://inotebook-u0jj.onrender.com/api/auth"
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true); // Show loading spinner
         const { name, email, password } = credentials;
-        const response = await fetch(`https://cloud-api-ewam.onrender.com/api/auth/createuser`, {
+        const response = await fetch(`${CONST_API_USER}/createuser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

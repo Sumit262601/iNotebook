@@ -9,12 +9,13 @@ const Login = (props) => {
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);  // New state for loading spinner
     const navigate = useNavigate();
+    const CONST_API_USER = "https://inotebook-u0jj.onrender.com/api/auth"
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true); // Show loading spinner
         try {
-            const response = await fetch(`https://cloud-api-ewam.onrender.com/api/auth/login`, {
+            const response = await fetch(`${CONST_API_USER}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
