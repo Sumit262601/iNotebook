@@ -1,8 +1,8 @@
 const express = require('express');
-const User = require("../models/User")
 const fetchuser = require("../middleware/fetchuser")
-const router = express.Router();
 const { body, validationResult } = require('express-validator');
+const User = require("../models/User")
+const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const JWT_TOKEN = "Sumitisagooddev";
@@ -116,8 +116,9 @@ router.post('/login', [
 router.post('/getuser', fetchuser, async (req, res) => {
     try {
         const userId = req.user.id;
-        const user = await User.findById(userId).select("-password")
+        const user = await User.findById(userId).select("-password", "name")
         res.send(user)
+        console.log(user);
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Interal Server Error")

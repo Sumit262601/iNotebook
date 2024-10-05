@@ -1,43 +1,78 @@
 import './App.css';
-import Home from './components/Home';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from 'react';
+import { Toaster } from 'react-hot-toast';  // Import Toaster for react-hot-toast
 import Navbar from './components/Navbar';
+import Home from './components/Home';
 import About from './components/About';
 import AddNotes from './components/AddNotes';
-import NoteState from './context/notes/NoteState';
 import YourNotes from './components/YourNotes';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Alert from './components/Alert';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import { useState } from 'react';
+import Alert from './components/Alert';
+import ProtectedRoute from './Auth/ProtectedRouter'; // Import the ProtectedRoute component
+import NoteState from './context/notes/NoteState';  // NoteState for state management
 
 function App() {
   const [alert, setAlert] = useState(null);
+
+  // Function to show alert with message and type
   const showAlert = (message, type) => {
-    setAlert({
-      msg: message,
-      type: type
-    })
+    setAlert({ msg: message, type: type });
     setTimeout(() => {
       setAlert(null);
     }, 1500);
-  }
-
+  };
 
   return (
     <>
       <NoteState>
         <Router>
+          {/* Navbar component */}
           <Navbar brand="iNotebook" yournotes="Your Notes" home="Add Notes" about="About" />
+
+          {/* Alert component for displaying alerts */}
           <Alert alert={alert} />
-          <div className='container my-3'>
+
+          {/* Toaster component for toast notifications */}
+          <Toaster position="top-center" reverseOrder={false} />
+
+          {/* Main Routes */}
+          <div className=''>
             <Routes>
-              <Route excat path="/" element={<Home />} ></Route>
-              <Route excat path="/yournotes" element={<YourNotes showAlert={showAlert} />} ></Route>
-              <Route excat path="/addnotes" element={<AddNotes showAlert={showAlert} />} ></Route>
-              <Route excat path="/about" element={<About />}></Route>
-              <Route excat path="/login" element={<Login showAlert={showAlert} />}></Route>
-              <Route excat path="/signup" element={<Signup showAlert={showAlert} />}></Route>
+              {/* Public Routes */}
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/login" element={<Login showAlert={showAlert} />} />
+              <Route exact path="/signup" element={<Signup showAlert={showAlert} />} />
+
+              {/* Protected Routes */}
+              <Route
+                exact
+                path="/yournotes"
+                element={
+                  <ProtectedRoute>
+                    <YourNotes showAlert={showAlert} />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/addnotes"
+                element={
+                  <ProtectedRoute>
+                    <AddNotes showAlert={showAlert} />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/about"
+                element={
+                  <ProtectedRoute>
+                    <About />
+                  </ProtectedRoute>
+                }
+              />
             </Routes>
           </div>
         </Router>

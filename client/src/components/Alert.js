@@ -1,23 +1,41 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 
 const Alert = (props) => {
+    // Capitalize function
     const capitalized = (word) => {
-        // if (word === "danger"){
-        //     word === "error"
-        // }
         const lower = word.toLowerCase();
         return lower.charAt(0).toUpperCase() + lower.slice(1);
-    }
+    };
+
+    // Show toast based on alert prop
+    useEffect(() => {
+        if (props.alert) {
+            const { type, msg } = props.alert;
+
+            switch (type) {
+                case 'success':
+                    toast.success(capitalized(msg));
+                    break;
+                case 'error':
+                    toast.error(capitalized(msg));
+                    break;
+                case 'info':
+                    toast(capitalized(msg), { icon: 'ℹ️' });
+                    break;
+                case 'warning':
+                    toast(capitalized(msg), { icon: '⚠️' });
+                    break;
+                default:
+                    toast(capitalized(msg));
+            }
+        }
+    }, [props.alert]); // Re-run this when the alert prop changes
 
     return (
-        <div style={{ height: '15px' }} className='my-3'>
-            {props.alert && (
-            <div className={`alert alert-${props.alert.type} alert-dismissible fade show col-md-4`}role="alert">
-                <strong> {capitalized(props.alert.msg)}</strong>
-            </div>
-            )}
-        </div>
-    )
-}
+        // Placeholder div for consistent layout
+        <div style={{ height: '15px' }} className='my-3'></div>
+    );
+};
 
-export default Alert
+export default Alert;
