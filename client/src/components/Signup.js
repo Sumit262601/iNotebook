@@ -54,7 +54,7 @@ const Signup = (props) => {
                 </div>
                 <div>
 
-                    <form className="mt-10 md:mt-0 max-w-xl w-screen items-center space-y-6" onSubmit={handleSubmit}>
+                    <form className="mt-10 md:mt-0 max-w-md w-screen items-center space-y-6" onSubmit={handleSubmit}>
                         <h1 className="text-4xl text-center text-customPrimarySignup">Create an Account</h1>
                         <div className="mb-4">
                             <label htmlFor="name" className="block text-lg font-medium ">Name</label>

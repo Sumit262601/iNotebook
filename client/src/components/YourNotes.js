@@ -98,7 +98,7 @@ const YourNotes = (props) => {
             {/* Notes section */}
             {notes.length === 0 ? (
                 <div className='flex flex-col items-center justify-center'>
-                    <div className="mt-36 flex flex-col items-center justify-center text-5xl text-[#4D869C]">
+                    <div className="mt-36 flex flex-col items-center justify-center text-3xl text-[#4D869C]">
                         Sorry! Don't have a notes.
                         <span className="mt-8 mb-4">🥺</span>
                     </div>
@@ -108,7 +108,7 @@ const YourNotes = (props) => {
                 </div>
             ) : (
                 <div className="px-6 sm:px-10">
-                    <h2 className="text-center xl:text-5xl md:text-3xl sm:text-3xl lg:text-4xl font-medium mb-3 text-[#3b4b76]">Your Notes</h2>
+                    <h2 className="text-center text-4xl md:text-3xl sm:text-3xl lg:text-4xl font-medium mb-3 text-[#3b4b76]">Your Notes</h2>
                     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
                         {notes.map((note) => (
                             <NotesItem key={note._id} showAlert={props.showAlert} updateNote={updateNote} note={note} />

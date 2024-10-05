@@ -45,7 +45,7 @@ const Navbar = (props) => {
                     </div>
 
                     {/* Login/Signup or Logout */}
-                    <div className="hidden lg:flex items-center space-x-4">
+                    <div className="lg:flex flex items-center space-x-4">
                         {!localStorage.getItem('token') ? (
                             <Link to="/login" className="flex items-center gap-2 bg-lighterBlue text-customBlue border-none p-2 rounded-xl">
                                 Login
@@ -57,12 +57,14 @@ const Navbar = (props) => {
                                 <FaPersonRunning />
                             </button>
                         )}
+                        {/* Hamburger Menu Icon (Visible on lg and below) */}
+                        <button className="block lg:hidden z-50" onClick={handleClick}>
+                            {click ? <FaTimes size={30} className="text-customWhite" /> : <CiMenuFries size={30} className="text-customWhite" />}
+                        </button>
+
                     </div>
 
-                    {/* Hamburger Menu Icon (Visible on lg and below) */}
-                    <button className="block lg:hidden z-50" onClick={handleClick}>
-                        {click ? <FaTimes size={30} className="text-customWhite" /> : <CiMenuFries size={30} className="text-customWhite" />}
-                    </button>
+
                 </div>
 
                 {/* Mobile Menu (Visible when hamburger icon is clicked) */}
@@ -78,7 +80,7 @@ const Navbar = (props) => {
                             {props.about}
                         </Link>
 
-                        {/* Mobile Login/Signup or Logout */}
+                        {/* Mobile Login/Signup or Logout
                         {!localStorage.getItem('token') ? (
                             <Link to="/login" className="flex items-center bg-customWhite text-customBlue border-none p-2 rounded-xl mt-20 gap-2">
                                 Login
@@ -89,7 +91,7 @@ const Navbar = (props) => {
                                 Logout
                                 <FaPersonRunning />
                             </button>
-                        )}
+                        )} */}
                     </ul>
                 </div>
             </div>
