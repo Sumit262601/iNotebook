@@ -45,7 +45,7 @@ const Navbar = (props) => {
                     </div>
 
                     {/* Login/Signup or Logout */}
-                    <div className="lg:flex flex items-center space-x-4">
+                    <div className="lg:flex flex items-center text-sm space-x-2">
                         {!localStorage.getItem('token') ? (
                             <Link to="/login" className="flex items-center gap-2 bg-lighterBlue text-customBlue border-none p-2 rounded-xl">
                                 Login
@@ -70,13 +70,13 @@ const Navbar = (props) => {
                 {/* Mobile Menu (Visible when hamburger icon is clicked) */}
                 <div className={`lg:hidden z-10 fixed top-0 right-0 h-full w-full bg-lightBlue p-10 transition-transform duration-500 ease-in-out ${click ? 'translate-x-0' : 'translate-x-full'}`}>
                     <ul className="flex flex-col mt-20 items-center space-y-8 text-4xl text-customWhite">
-                        <Link to="/yournotes" onClick={handleClick} className={`border-2 hover:border-customBlue p-2 rounded-md shadow-sm ${location.pathname === "/yournotes" ? "border-2 border-customBlue p-2 rounded-md shadow" : ""}`}>
+                        <Link to="/yournotes" onClick={handleClick} className={`hover:text-customBlue px-4 py-2 rounded ${location.pathname === "/yournotes" ? "border-b-2 border-customBlue" : "border-b-2 hover:border-customBlue"}`}>
                             {props.yournotes}
                         </Link>
-                        <Link to="/addnotes" onClick={handleClick} className={`border-2 hover:border-customBlue p-2 rounded-md shadow-sm ${location.pathname === "/addnotes" ? "" : ""}`}>
+                        <Link to="/addnotes" onClick={handleClick} className={`hover:text-customBlue px-4 py-2 rounded ${location.pathname === "/addnotes" ? "border-b-2 border-customBlue" : "border-b-2 hover:border-customBlue"}`}>
                             {props.home}
                         </Link>
-                        <Link to="/about" onClick={handleClick} className={`border-2 hover:border-customBlue p-2 rounded-md shadow-sm ${location.pathname === "/about" ? "" : ""}`}>
+                        <Link to="/about" onClick={handleClick} className={`hover:text-customBlue px-4 py-2 rounded ${location.pathname === "/about" ? "border-b-2 border-customBlue" : "border-b-2 hover:border-customBlue"}`}>
                             {props.about}
                         </Link>
 
